@@ -18,6 +18,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchCountries());
   }, []);
+
   return (
     <Box>
       <TableContainer component={Paper}>
@@ -25,26 +26,28 @@ const Home = () => {
           <TableHead>
             <TableRow>
               <TableCell>Flag</TableCell>
-              <TableCell align="right">Name</TableCell>
-              <TableCell align="right">Capital</TableCell>
-              <TableCell align="right">Population</TableCell>
-              <TableCell align="right">Region</TableCell>
-              <TableCell align="right">Languages</TableCell>
-              <TableCell align="right"></TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Capital</TableCell>
+              <TableCell>Population</TableCell>
+              <TableCell>Region</TableCell>
+              <TableCell>Languages</TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {countries.map((item) => (
               <TableRow
-                key={item.name}
+                key={item.name.official}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row"></TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
+                <TableCell component="th" scope="row">
+                  <img src={item.flags.png} />
+                </TableCell>
+                <TableCell>{item.name.official}</TableCell>
+                <TableCell>{item.capital}</TableCell>
+                <TableCell>{item.population}</TableCell>
+                <TableCell>{item.region}</TableCell>
+                <TableCell>{Object.values(item.languages)}</TableCell>
               </TableRow>
             ))}
           </TableBody>
