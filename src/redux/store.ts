@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import countriesReducer from "./reducers/countryReducer";
 
 const store = configureStore({
-  reducer: {},
+  reducer: { countriesReducer },
   //   preloadedState:
 });
 

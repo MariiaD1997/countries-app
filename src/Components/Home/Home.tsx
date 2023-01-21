@@ -7,9 +7,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useAppSelector } from "../../hooks/reactHooks";
 
 const Home = () => {
-  let countries = [];
+  const countries = useAppSelector((state) => state.countriesReducer);
   return (
     <Box>
       <TableContainer component={Paper}>
@@ -18,10 +19,11 @@ const Home = () => {
             <TableRow>
               <TableCell>Flag</TableCell>
               <TableCell align="right">Name</TableCell>
+              <TableCell align="right">Capital</TableCell>
               <TableCell align="right">Population</TableCell>
               <TableCell align="right">Region</TableCell>
               <TableCell align="right">Languages</TableCell>
-              <TableCell></TableCell>
+              <TableCell align="right"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
