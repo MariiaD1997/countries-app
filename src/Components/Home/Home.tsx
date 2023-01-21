@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Grid } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,10 +7,17 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useAppSelector } from "../../hooks/reactHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/reactHooks";
+import { fetchCountries } from "../../redux/reducers/countryReducer";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
+  const dispatch = useAppDispatch();
   const countries = useAppSelector((state) => state.countriesReducer);
+  console.log(countries);
+  useEffect(() => {
+    dispatch(fetchCountries());
+  }, []);
   return (
     <Box>
       <TableContainer component={Paper}>
